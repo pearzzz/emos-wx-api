@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class OAuth2Realm extends AuthorizingRealm {
 
     @Autowired
-    private JwtUntil jwtUntil;
+    private JwtUtil jwtUtil;
 
     @Override
     public boolean supports(AuthenticationToken token) {
