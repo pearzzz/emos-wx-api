@@ -114,8 +114,7 @@ public class OAuthFilter extends AuthenticatingFilter {
     }
 
     /**
-     * TODO
-     * @param token Shrio执行OAuth2Realm时，如果认证或授权失败，就会运行这个方法
+     * TODO Shrio执行OAuth2Realm时，如果认证或授权失败，就会运行这个方法
     */
     @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
