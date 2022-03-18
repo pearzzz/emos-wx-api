@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @Email zhaihonghao317@163.com
  * @Date 15:45 2022/3/18
  */
-public class OAuthFilter extends AuthenticatingFilter {
+public class OAuth2Filter extends AuthenticatingFilter {
     @Autowired
     private ThreadLocalToken threadLocalToken;
 
