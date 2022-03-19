@@ -1,4 +1,4 @@
-package com.example.emos.wx.config.shrio;
+package com.example.emos.wx.config.shiro;
 
 import cn.hutool.core.date.DateField;
 import cn.hutool.core.date.DateUtil;

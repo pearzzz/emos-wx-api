@@ -1,4 +1,4 @@
-package com.example.emos.wx.config.shrio;
+package com.example.emos.wx.config.shiro;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -9,6 +9,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @Description
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Email zhaihonghao317@163.com
  * @Date 13:49 2022/3/18
  */
+@Component
 public class OAuth2Realm extends AuthorizingRealm {
 
     @Autowired

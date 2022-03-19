@@ -1,4 +1,4 @@
-package com.example.emos.wx.config.shrio;
+package com.example.emos.wx.config.shiro;
 
 import cn.hutool.core.util.StrUtil;
 import com.auth0.jwt.exceptions.TokenExpiredException;
@@ -8,7 +8,9 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.web.filter.authc.AuthenticatingFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletRequest;
@@ -24,6 +26,8 @@ import java.util.concurrent.TimeUnit;
  * @Email zhaihonghao317@163.com
  * @Date 15:45 2022/3/18
  */
+@Component
+@Scope("prototype")
 public class OAuth2Filter extends AuthenticatingFilter {
     @Autowired
     private ThreadLocalToken threadLocalToken;

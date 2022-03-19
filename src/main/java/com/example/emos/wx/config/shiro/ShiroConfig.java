@@ -1,4 +1,4 @@
-package com.example.emos.wx.config.shrio;
+package com.example.emos.wx.config.shiro;
 
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -21,7 +21,7 @@ import java.util.Map;
  */
 
 @Configuration
-public class ShrioConfig {
+public class ShiroConfig {
 
     @Bean("securityManager")
     public SecurityManager securityManager(OAuth2Realm realm){
