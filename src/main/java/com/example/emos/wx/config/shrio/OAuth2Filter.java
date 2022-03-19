@@ -1,4 +1,4 @@
-package com.example.emos.wx.config.shiro;
+package com.example.emos.wx.config.shrio;
 
 import cn.hutool.core.util.StrUtil;
 import com.auth0.jwt.exceptions.TokenExpiredException;

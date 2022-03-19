@@ -1,4 +1,4 @@
-package com.example.emos.wx.config.shiro;
+package com.example.emos.wx.config.shrio;
 
 import org.apache.shiro.authc.AuthenticationToken;
 
