@@ -4,6 +4,7 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.emos.wx.db.dao.TbUserDao;
+import com.example.emos.wx.db.pojo.TbUser;
 import com.example.emos.wx.exception.EmosException;
 import com.example.emos.wx.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -93,5 +94,23 @@ public class UserServiceImpl implements UserService {
         }
         //TODO 从消息队列中接收消息，转移到消息表
         return id;
+    }
+
+    @Override
+    public TbUser searchById(int id) {
+        TbUser user = userDao.searchById(id);
+        return user;
+    }
+
+    @Override
+    public String searchUserHiredate(int userId) {
+        String hiredate = userDao.searchUserHiredate(userId);
+        return hiredate;
+    }
+
+    @Override
+    public HashMap searchUserSummary(int userId) {
+        HashMap map = userDao.searchUserSummary(userId);
+        return map;
     }
 }

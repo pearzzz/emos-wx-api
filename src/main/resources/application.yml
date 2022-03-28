@@ -24,7 +24,6 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
-
   redis:
     database: 0
     host: localhost
@@ -36,7 +35,6 @@ spring:
         max-wait: -1ms
         max-idle: 16
         min-idle: 8
-
   data:
     mongodb:
       host: localhost
@@ -45,6 +43,11 @@ spring:
       authentication-database: admin
       username: root
       password: root
+  mail:
+    default-encoding: UTF-8
+    host: smtp.aliyun.com
+    username: zhaihonghao317@aliyun.com
+    password: Zhh980317
 
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
@@ -69,6 +72,14 @@ emos:
     expire: 5
     #令牌缓存时间（天）
     cache-expire: 10
+  face:
+    createFaceModelUrl: http://10.15.22.182:3000/create_face_model
+    checkinUrl: http://10.15.22.182:3000/checkin
+  email:
+    system: zhaihonghao317@aliyun.com
+    hr: 1095971161@qq.com
+  image-folder: D:/others/emos/image
+  code: 12341
 
 wx:
   app-id: wxab64ef0b75837fe8
