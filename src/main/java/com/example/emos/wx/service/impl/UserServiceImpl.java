@@ -1,12 +1,16 @@
 package com.example.emos.wx.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.emos.wx.db.dao.TbUserDao;
+import com.example.emos.wx.db.pojo.MessageEntity;
 import com.example.emos.wx.db.pojo.TbUser;
 import com.example.emos.wx.exception.EmosException;
+import com.example.emos.wx.service.MessageService;
 import com.example.emos.wx.service.UserService;
+import com.example.emos.wx.task.MessageTask;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,6 +38,10 @@ public class UserServiceImpl implements UserService {
     private String appSecret;
     @Autowired
     private TbUserDao userDao;
+    @Autowired
+    private MessageTask messageTask;
+    @Autowired
+    private MessageService messageService;
 
     private String getOpenId(String code) {
         String url = "https://api.weixin.qq.com/sns/jscode2session";
@@ -69,6 +77,15 @@ public class UserServiceImpl implements UserService {
                 param.put("root", true);
                 userDao.insert(param);
                 int id = userDao.searchIdByOpenId(openId);
+
+                MessageEntity entity=new MessageEntity();
+                entity.setSenderId(0);
+                entity.setSenderName("系统消息");
+                entity.setUuid(IdUtil.simpleUUID());
+                entity.setMsg("欢迎您注册成为超级管理员，请及时更新你的员工个人信息。");
+                entity.setSendTime(new Date());
+                messageTask.sendAsync(id+"",entity);
+
                 return id;
             } else {
                 throw new EmosException("已存在超级管理员，无法绑定！");
@@ -93,6 +110,25 @@ public class UserServiceImpl implements UserService {
             throw new EmosException("账户不存在");
         }
         //TODO 从消息队列中接收消息，转移到消息表
+        //messageTask.receiveAsync(id + "");
+
+        //for (int i = 1; i <= 100; i++) {
+        //    MessageEntity message = new MessageEntity();
+        //    message.setUuid(IdUtil.simpleUUID());
+        //    message.setSenderId(0);
+        //    message.setSenderName("系统消息");
+        //    message.setMsg("这是第" + i + "条测试消息");
+        //    message.setSendTime(new Date());
+        //    String idd = messageService.insertMessage(message);
+        //
+        //    MessageRefEntity ref = new MessageRefEntity();
+        //    ref.setMessageId(idd);
+        //    ref.setReceiverId(6);
+        //    ref.setLastFlag(true);
+        //    ref.setReadFlag(false);
+        //    messageService.insertRef(ref);
+        //}
+
         return id;
     }
 
